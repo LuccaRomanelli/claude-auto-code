@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tmux -V:*)",
+      "Bash(readlink:*)",
+      "Bash(mise trust:*)",
+      "Bash(stow:*)",
+      "Bash(git checkout:*)",
+      "Bash(mount:*)",
+      "Bash(echo:*)",
+      "Bash(fc-list:*)",
+      "Bash(chmod:*)",
+      "Bash(docker ps:*)",
+      "Bash(lsof:*)",
+      "Bash(ss:*)",
+      "Bash(ps:*)"
+    ]
+  }
+}

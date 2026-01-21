@@ -1,0 +1,22 @@
+{
+  "name": "Claude Auto Code",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/project",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postStartCommand": "tmux new-session -d -s main 2>/dev/null || true",
+  "remoteUser": "dev",
+  "forwardPorts": [8000, 5173],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/home/linuxbrew/.linuxbrew/bin/zsh"
+          }
+        }
+      }
+    }
+  }
+}
