@@ -7,6 +7,10 @@ services:
       - ..:/workspaces/project:cached
       - ~/.ssh:/home/dev/.ssh:ro
       - ~/.gitconfig:/home/dev/.gitconfig:ro
+      # SSH agent socket for key forwarding
+      - ${SSH_AUTH_SOCK:-/dev/null}:/ssh-agent:ro
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     dns:
       - 8.8.8.8
       - 1.1.1.1

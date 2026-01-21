@@ -82,6 +82,8 @@ RUN brew install \
     jq \
     lsof \
     starship \
+    lazygit \
+    gh \
     node@20
 
 # Add node to PATH and install Claude Code
