@@ -4,7 +4,12 @@
       "Bash(chmod:*)",
       "Bash(docker build:*)",
       "Bash(docker run:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(ss:*)",
+      "Bash(netstat:*)",
+      "Bash(docker ps:*)",
+      "Bash(docker inspect:*)",
+      "Bash(docker port:*)"
     ]
   }
 }

@@ -72,7 +72,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS - allow only localhost origins for security
+# CORS - allow localhost and Docker network origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -81,6 +81,7 @@ app.add_middleware(
         "http://localhost:8888",      # Production
         "http://127.0.0.1:8888",
     ],
+    allow_origin_regex=r"^http://172\.\d+\.\d+\.\d+:\d+$",  # Docker networks
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -93,14 +94,21 @@ app.add_middleware(
 
 @app.middleware("http")
 async def require_localhost(request: Request, call_next):
-    """Only allow requests from localhost."""
+    """Only allow requests from localhost or Docker networks."""
     client_host = request.client.host if request.client else None
 
     # Allow localhost connections
-    if client_host not in ("127.0.0.1", "::1", "localhost", None):
-        raise HTTPException(status_code=403, detail="Localhost access only")
+    if client_host in ("127.0.0.1", "::1", "localhost", None):
+        return await call_next(request)
 
-    return await call_next(request)
+    # Allow Docker network ranges (172.16.0.0/12, 192.168.0.0/16, 10.0.0.0/8)
+    if client_host:
+        if (client_host.startswith("172.") or
+            client_host.startswith("192.168.") or
+            client_host.startswith("10.")):
+            return await call_next(request)
+
+    raise HTTPException(status_code=403, detail="Localhost access only")
 
 
 # ============================================================================

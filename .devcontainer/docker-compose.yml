@@ -14,10 +14,10 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
-    # ports are forwarded by devcontainer CLI when needed
-    # ports:
-    #   - "8000:8000"
-    #   - "5173:5173"
+    ports:
+      - "8000:8000"
+      - "5173:5173"
+      - "8888:8888"
     stdin_open: true
     tty: true
     command: sleep infinity
