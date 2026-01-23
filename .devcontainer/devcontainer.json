@@ -6,7 +6,7 @@
   "postCreateCommand": "bash .devcontainer/post-create.sh",
   "postStartCommand": "tmux new-session -d -s main 2>/dev/null || true",
   "remoteUser": "dev",
-  "forwardPorts": [8000, 5173],
+  "forwardPorts": [8000, 5173, 8888],
   "customizations": {
     "vscode": {
       "settings": {
