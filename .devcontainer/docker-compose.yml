@@ -9,6 +9,8 @@ services:
       - ~/.gitconfig:/home/dev/.gitconfig:ro
       # SSH agent socket for key forwarding
       - ${SSH_AUTH_SOCK:-/dev/null}:/ssh-agent:ro
+      # Projects folder - accessible from host at ~/autocoder-projects
+      - ~/autocoder-projects:/projects:cached
     environment:
       - SSH_AUTH_SOCK=/ssh-agent
     dns:

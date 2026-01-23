@@ -3,6 +3,9 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/project",
+  "mounts": [
+    "source=${localEnv:HOME}/autocoder-projects,target=/projects,type=bind"
+  ],
   "postCreateCommand": "bash .devcontainer/post-create.sh",
   "postStartCommand": "tmux new-session -d -s main 2>/dev/null || true",
   "remoteUser": "dev",

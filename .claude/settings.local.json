@@ -9,7 +9,11 @@
       "Bash(netstat:*)",
       "Bash(docker ps:*)",
       "Bash(docker inspect:*)",
-      "Bash(docker port:*)"
+      "Bash(docker port:*)",
+      "Bash(curl:*)",
+      "Bash(python -c:*)",
+      "Bash(find:*)",
+      "Bash(sqlite3:*)"
     ]
   }
 }
